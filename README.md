@@ -24,6 +24,12 @@ A modern personal homepage and blog system built with Next.js 15, featuring bili
   - `rss`: 仅转发外部 RSS 订阅
   - `both`: 合并两者并按时间排序
 - 🔗 Discover 配置从 contacts 移至 footer
+- 🎬 番剧列表功能：
+  - 集成 Bangumi API 显示追番记录
+  - 支持分类筛选（想看/在看/看过/搁置/抛弃）
+  - 多标签筛选和搜索功能
+  - 响应式瀑布流布局
+  - 移动端优化的紧凑模式
 
 ### 文档完善
 - 📚 新增完整配置指南（1400+ 行）
@@ -39,7 +45,8 @@ A modern personal homepage and blog system built with Next.js 15, featuring bili
 - 🎨 **Tailwind CSS** - 现代化的样式设计
 - 🌐 **国际化 (i18n)** - 支持中英文双语切换
 - 📝 **RSS 博客集成** - 通过 RSS feed 聚合外部博客内容
-- 🎯 **TypeScript** - 完整的类型安全
+- � **番剧追踪** - 集成 Bangumi API，展示追番列表和进度
+- �🎯 **TypeScript** - 完整的类型安全
 - 🎭 **动画效果** - 使用 Motion 和 Framer Motion
 - 📊 **分析集成** - Google Analytics 和 Vercel Analytics
 - 🎨 **主题切换** - 支持明暗主题切换
@@ -129,6 +136,11 @@ NEXT_PUBLIC_DISPLAY_NAME=yourname
 # 推荐配置
 NEXT_PUBLIC_SITE_NAME=Your Name
 NEXT_PUBLIC_DESCRIPTION=Developer, Designer, Creator
+
+# 番剧追踪（可选）
+NEXT_PUBLIC_BANGUMI_USERNAME=your_bangumi_username
+NEXT_PUBLIC_BANGUMI_TOKEN=your_bangumi_token
+NEXT_PUBLIC_BANGUMI_MAX_TAGS=3
 ```
 
 > 💡 **提示**: 查看 `.env.example` 文件了解所有可配置项，或参考 [配置指南](docs/configuration-guide.md) 获取详细说明。

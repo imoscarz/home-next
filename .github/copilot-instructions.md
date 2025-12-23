@@ -2,7 +2,7 @@
 
 ## 项目概述
 
-这是一个基于 Next.js 15 App Router 的个人主页和博客系统，使用 TypeScript、Tailwind CSS 和现代化的 React 生态系统。项目支持中英文双语，采用服务器组件和客户端组件混合架构。博客内容通过 RSS feed 从外部博客平台聚合，而非本地 Markdown 文件编译。
+这是一个基于 Next.js 15 App Router 的个人主页和博客系统，使用 TypeScript、Tailwind CSS 和现代化的 React 生态系统。项目支持中英文双语，采用服务器组件和客户端组件混合架构。博客内容通过 RSS feed 从外部博客平台聚合，而非本地 Markdown 文件编译。项目还集成了 Bangumi API 用于展示番剧追踪列表。
 
 ## 技术栈和工具
 
@@ -13,8 +13,63 @@
 - **动画**: Motion (Framer Motion 的轻量级替代)
 - **内容处理**: unified, remark, rehype (用于 RSS 内容渲染)
 - **RSS 解析**: rss-parser
+- **番剧 API**: Bangumi API v0
 - **包管理器**: pnpm
 - **代码规范**: ESLint, Prettier
+
+## 番剧列表功能
+
+### 功能特性
+
+1. **数据获取**: 通过 Bangumi API v0 获取用户的番剧收藏列表
+2. **分类筛选**: 支持按状态筛选（想看/在看/看过/搁置/抛弃/全部）
+3. **标签筛选**: 可搜索的多选标签过滤器，支持 AND 逻辑
+4. **搜索功能**: 支持按中文/日文名称搜索番剧
+5. **瀑布流布局**: 使用 CSS columns 实现响应式 masonry 布局
+6. **悬浮控制栏**: 移动端顶部固定，桌面端底部固定
+7. **响应式设计**: 移动端紧凑图标模式，桌面端完整显示
+8. **动画效果**: 卡片淡入和悬停动画
+
+### 关键组件
+
+- `src/app/anime/page.tsx` - 服务器组件，获取番剧数据
+- `src/components/portfolio/anime-list-client.tsx` - 客户端组件，处理筛选和布局
+- `src/components/portfolio/anime-category-select.tsx` - 分类选择器
+- `src/components/portfolio/anime-tag-select.tsx` - 标签多选器
+- `src/components/portfolio/bangumi-card.tsx` - 番剧卡片
+- `src/lib/bangumi.ts` - Bangumi API 类型和工具函数
+
+### 环境变量
+
+```env
+NEXT_PUBLIC_BANGUMI_USERNAME=your_username    # Bangumi 用户名
+NEXT_PUBLIC_BANGUMI_TOKEN=your_token          # Bangumi API Token
+NEXT_PUBLIC_BANGUMI_MAX_TAGS=3                # 显示的标签数量（默认3）
+```
+
+### 布局实现
+
+使用 CSS columns 实现瀑布流：
+
+```tsx
+<div className="columns-2 sm:columns-3 md:columns-4 lg:columns-5 gap-4">
+  {items.map(item => (
+    <div className="inline-block w-full mb-4">
+      <Card />
+    </div>
+  ))}
+</div>
+```
+
+### 响应式控制
+
+移动端使用紧凑模式（仅图标）：
+
+```tsx
+// 移动端: w-10 h-10 p-0
+// 桌面端: sm:w-auto sm:px-3
+<AnimeCategorySelect compact={true} />
+```
 
 ## 代码风格和最佳实践
 
@@ -96,7 +151,7 @@ src/
 ├── app/              # Next.js App Router 页面
 │   ├── layout.tsx   # 根布局（包含元数据）
 │   ├── page.tsx     # 页面组件
-│   └── [lang]/      # 国际化路由
+│   └── blog/        # 博客相关页面
 ├── components/       # React 组件
 │   ├── blocks/      # 页面级大型组件
 │   ├── ui/          # 可复用 UI 组件
@@ -133,9 +188,11 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
 }
 ```
 
-3. **路由结构**: 
+3. **语言切换机制**: 
    - 默认语言 (中文): `/` → `app/page.tsx`
-   - 其他语言 (英文): `/en` → `app/[lang]/page.tsx`
+   - 英文: `/?lang=en` （通过 URL 查询参数）
+   - 使用 `useLocale()` hook 获取当前语言
+   - 使用 `LanguageToggle` 组件切换语言
 
 ## 组件开发指南
 

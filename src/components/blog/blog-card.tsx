@@ -31,11 +31,12 @@ export function BlogCard({
 }: BlogCardProps) {
   // Determine if this is an external link (RSS) or internal link
   const isExternal = !!link;
+  const internalPath = `/blog/${slug}`;
   const href = isExternal
     ? link
     : locale === "en"
-      ? `/en/blog/${slug}`
-      : `/blog/${slug}`;
+      ? `${internalPath}?lang=en`
+      : internalPath;
 
   return (
     <Link

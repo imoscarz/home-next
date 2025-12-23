@@ -23,7 +23,7 @@
     "bottom": {
       "lastUpdated": "Last updated",
       "madeWith": "Made with",
-      "modifiedFrom": "Build with"
+      "buildWith": "Build with"
     }
   },
   "blog": {

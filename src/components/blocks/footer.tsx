@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { Icons } from "@/components/icons";
 import { Separator } from "@/components/ui/separator";
+import { useLocale } from "@/lib/i18n";
 import { DATA } from "@/data";
 
 type Dictionary = {
@@ -33,25 +33,23 @@ type Dictionary = {
     bottom: {
       lastUpdated: string;
       madeWith: string;
-      modifiedFrom: string;
+      buildWith: string;
     };
   };
 };
 
 export default function Footer() {
-  const pathname = usePathname();
-  const isEnglish = pathname.startsWith("/en");
+  const currentLocale = useLocale();
   const currentYear = new Date().getFullYear();
   const [dict, setDict] = useState<Dictionary | null>(null);
 
   useEffect(() => {
     const loadDictionary = async () => {
-      const locale = isEnglish ? "en" : "zh";
-      const module = await import(`@/lib/i18n/locales/${locale}.json`);
+      const module = await import(`@/lib/i18n/locales/${currentLocale}.json`);
       setDict(module.default);
     };
     loadDictionary();
-  }, [isEnglish]);
+  }, [currentLocale]);
 
   if (!dict) {
     return null; // or a loading skeleton
@@ -121,7 +119,7 @@ export default function Footer() {
               {DATA.footerResources.map((resource) => (
                 <Link
                   key={resource.name}
-                  href={isEnglish ? `/en${resource.href}` : resource.href}
+                  href={resource.href}
                   className="text-muted-foreground hover:text-foreground block text-sm transition-colors"
                 >
                   {t.footer.resources[resource.name as keyof typeof t.footer.resources]}
@@ -159,7 +157,7 @@ export default function Footer() {
           <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
             <div className="text-muted-foreground flex items-center gap-2 text-sm">
               <span>
-                © {currentYear} {isEnglish ? DATA.name : DATA.chinese.name}
+                © {currentYear} {currentLocale === "en" ? DATA.name : DATA.chinese.name}
               </span>
               <span>•</span>
               <span>{t.footer.legal.allRightsReserved}</span>
@@ -176,7 +174,7 @@ export default function Footer() {
               <span>{t.footer.bottom.madeWith}</span>
               <Icons.heartbeat className="h-4 w-4 fill-red-500 text-red-500" />
               <span>•</span>
-              <span>{t.footer.bottom.modifiedFrom}</span>
+              <span>{t.footer.bottom.buildWith}</span>
               <Link
                 href="https://github.com/zhengzangw/nextjs-portfolio-blog-research"
                 target="_blank"

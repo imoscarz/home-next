@@ -195,9 +195,10 @@ export function generateBlogPostingJsonLd(post: {
     url: DATA.url,
   };
 
-  const baseUrl =
-    post.locale === "en" ? `${DATA.url}/en/blog` : `${DATA.url}/blog`;
-  const postUrl = `${baseUrl}/${post.slug}`;
+  const baseUrl = `${DATA.url}/blog`;
+  const postUrl = post.locale === "en" 
+    ? `${baseUrl}/${post.slug}?lang=en` 
+    : `${baseUrl}/${post.slug}`;
 
   const blogPosting: WithContext<BlogPosting> = {
     "@context": "https://schema.org",
