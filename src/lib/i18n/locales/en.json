@@ -1,0 +1,61 @@
+{
+  "nav": {
+    "about": "About",
+    "projects": "Projects",
+    "education": "Education",
+    "skills": "Skills"
+  },
+  "footer": {
+    "sections": {
+      "quickNavigation": "Quick Navigation",
+      "connect": "Connect",
+      "resources": "Resources",
+      "discover": "Discover"
+    },
+    "resources": {
+      "blog": "Blog"
+    },
+    "legal": {
+      "allRightsReserved": "All rights reserved",
+      "privacyPolicy": "Privacy Policy",
+      "termsDisclaimer": "Terms & Disclaimer"
+    },
+    "bottom": {
+      "lastUpdated": "Last updated",
+      "madeWith": "Made with",
+      "modifiedFrom": "Build with"
+    }
+  },
+  "blog": {
+    "by": "By ",
+    "readMore": "Read more",
+    "title": "Blog",
+    "noPosts": "No blog posts available. Configure your RSS feed URL in the environment variables.",
+    "visitBlogHome": "Visit Blog Home"
+  },
+  "anime": {
+    "title": "Anime List",
+    "description": "Anime and series I'm currently watching, powered by Bangumi",
+    "noAnime": "No anime in watch list",
+    "metadata": {
+      "title": "Anime List",
+      "description": "Anime and series I'm currently watching"
+    }
+  },
+  "page": {
+    "about": "About",
+    "moreInfo": "For more information, please visit the Chinese page",
+    "viewFullPage": "View full Chinese page"
+  },
+  "home": {
+    "sections": {
+      "about": "About",
+      "skills": "Skills",
+      "education": "Education"
+    },
+    "projects": {
+      "badge": "Selected Projects",
+      "title": "Check out my latest work"
+    }
+  }
+}

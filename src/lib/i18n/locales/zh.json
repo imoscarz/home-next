@@ -1,0 +1,61 @@
+{
+  "nav": {
+    "about": "关于",
+    "projects": "项目",
+    "education": "教育",
+    "skills": "技能"
+  },
+  "footer": {
+    "sections": {
+      "quickNavigation": "快速导航",
+      "connect": "联系",
+      "resources": "资源",
+      "discover": "发现"
+    },
+    "resources": {
+      "blog": "博客"
+    },
+    "legal": {
+      "allRightsReserved": "版权所有",
+      "privacyPolicy": "隐私政策",
+      "termsDisclaimer": "条款与免责声明"
+    },
+    "bottom": {
+      "lastUpdated": "最后更新",
+      "madeWith": "追随",
+      "modifiedFrom": "修改自"
+    }
+  },
+  "blog": {
+    "by": "作者：",
+    "readMore": "阅读更多",
+    "title": "博客",
+    "noPosts": "暂无博客文章。请在环境变量中配置RSS订阅源URL。",
+    "visitBlogHome": "访问博客首页"
+  },
+  "anime": {
+    "title": "追番列表",
+    "description": "记录我正在观看的动漫和番剧，数据来自 Bangumi",
+    "noAnime": "暂无追番记录",
+    "metadata": {
+      "title": "追番列表",
+      "description": "我正在观看的动漫和番剧"
+    }
+  },
+  "page": {
+    "about": "关于我",
+    "moreInfo": "更多信息请查看英文页面",
+    "viewFullPage": "查看完整英文页面"
+  },
+  "home": {
+    "sections": {
+      "about": "关于我",
+      "skills": "技能",
+      "education": "教育经历"
+    },
+    "projects": {
+      "badge": "精选项目",
+      "title": "查看我的最新作品"
+    }
+  }
+}
