@@ -48,6 +48,10 @@ export interface BangumiCollection {
       score: number;
     };
     total_episodes: number;
+    tags: Array<{
+      name: string;
+      count: number;
+    }>;
   };
 }
 
@@ -90,6 +94,16 @@ export async function getBangumiCollections(
     return [];
   }
 }
+
+export type CollectionType = 'all' | 'watching' | 'watched' | 'wish' | 'onHold' | 'dropped';
+
+export const COLLECTION_TYPE_MAP: Record<number, CollectionType> = {
+  1: 'wish',
+  2: 'watched',
+  3: 'watching',
+  4: 'onHold',
+  5: 'dropped',
+};
 
 export function getCollectionTypeLabel(type: number, locale: "en" | "zh") {
   const labels = {

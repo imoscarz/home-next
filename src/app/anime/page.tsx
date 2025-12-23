@@ -1,9 +1,9 @@
 import { Metadata } from "next";
 
-import { BangumiCard } from "@/components/portfolio/bangumi-card";
+import { AnimeListClient } from "@/components/portfolio/anime-list-client";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { BLUR_FADE_DELAY } from "@/data";
-import { getBangumiCollections } from "@/lib/bangumi";
+import { getBangumiCollections, type CollectionType } from "@/lib/bangumi";
 import { env } from "@/lib/env";
 import { getDictionary, getLocaleFromSearchParams } from "@/lib/i18n";
 
@@ -25,11 +25,31 @@ export default async function AnimePage({ searchParams }: PageProps) {
   const locale = await getLocaleFromSearchParams(searchParams);
   const dict = await getDictionary(locale);
   
-  const collections = await getBangumiCollections(
-    env.bangumiUsername,
-    env.bangumiToken,
-    3 // watching
+  // Fetch all collection types
+  const allCollectionsPromises = [1, 2, 3, 4, 5].map(type => 
+    getBangumiCollections(env.bangumiUsername, env.bangumiToken, type)
   );
+  const allCollectionsArrays = await Promise.all(allCollectionsPromises);
+  const allCollections = allCollectionsArrays.flat();
+  
+  // Group by collection type
+  const groupedCollections: Record<CollectionType, typeof allCollections> = {
+    all: allCollections,
+    watching: allCollections.filter(c => c.type === 3),
+    watched: allCollections.filter(c => c.type === 2),
+    wish: allCollections.filter(c => c.type === 1),
+    onHold: allCollections.filter(c => c.type === 4),
+    dropped: allCollections.filter(c => c.type === 5),
+  };
+
+  const categories: { key: CollectionType; label: string }[] = [
+    { key: 'all', label: dict.anime.categories.all },
+    { key: 'watching', label: dict.anime.categories.watching },
+    { key: 'watched', label: dict.anime.categories.watched },
+    { key: 'wish', label: dict.anime.categories.wish },
+    { key: 'onHold', label: dict.anime.categories.onHold },
+    { key: 'dropped', label: dict.anime.categories.dropped },
+  ].filter(cat => cat.key === 'all' || groupedCollections[cat.key].length > 0);
 
   return (
     <section className="pt-16 pb-12 sm:pt-24 sm:pb-14 md:pt-32 md:pb-16 lg:pt-36 xl:pt-40">
@@ -45,24 +65,16 @@ export default async function AnimePage({ searchParams }: PageProps) {
           </div>
         </BlurFade>
 
-        {collections.length === 0 ? (
-          <BlurFade delay={BLUR_FADE_DELAY * 2}>
-            <div className="text-center py-12">
-              <p className="text-muted-foreground">{dict.anime.noAnime}</p>
-            </div>
-          </BlurFade>
-        ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-5">
-            {collections.map((collection, idx) => (
-              <BlurFade
-                key={collection.subject.id}
-                delay={BLUR_FADE_DELAY * 2 + idx * 0.02}
-              >
-                <BangumiCard collection={collection} locale={locale} />
-              </BlurFade>
-            ))}
-          </div>
-        )}
+        <AnimeListClient
+          groupedCollections={groupedCollections}
+          categories={categories}
+          locale={locale}
+          noAnimeText={dict.anime.noAnime}
+          tagFilterPlaceholder={dict.anime.tagFilter}
+          tagSearchPlaceholder={dict.anime.tagSearch}
+          tagEmptyText={dict.anime.tagEmpty}
+          searchPlaceholder={dict.anime.search}
+        />
       </div>
     </section>
   );

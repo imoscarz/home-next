@@ -40,7 +40,21 @@
     "metadata": {
       "title": "追番列表",
       "description": "我正在观看的动漫和番剧"
-    }
+    },
+    "categories": {
+      "all": "全部",
+      "watching": "在看",
+      "watched": "看过",
+      "wish": "想看",
+      "onHold": "搁置",
+      "dropped": "抛弃"
+    },
+    "count": "{{count}} 部",
+    "allTags": "所有标签",
+    "tagFilter": "筛选标签...",
+    "tagSearch": "搜索标签...",
+    "tagEmpty": "未找到标签",
+    "search": "搜索番剧..."
   },
   "page": {
     "about": "关于我",

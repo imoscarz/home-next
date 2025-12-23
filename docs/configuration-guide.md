@@ -805,10 +805,12 @@ export const env = {
   // 功能开关
   enableBlog: boolean;
   enableAnalytics: boolean;
+  enableAnime: boolean;
   
   // API Token
   bangumiToken: string;
   bangumiUsername: string;
+  bangumiMaxTags: number;
 } as const;
 ```
 
@@ -902,6 +904,12 @@ NEXT_PUBLIC_RSS_FEED_URL=https://your-blog.com/rss.xml
 |--------|------|------|--------|
 | `BANGUMI_TOKEN` | string | Bangumi API Token | `""` |
 | `BANGUMI_USERNAME` | string | Bangumi 用户名 | `""` |
+
+#### Bangumi 配置
+
+| 变量名 | 类型 | 说明 | 默认值 |
+|--------|------|------|--------|
+| `NEXT_PUBLIC_BANGUMI_MAX_TAGS` | number | 番剧卡片显示的最大标签数量 | `3` |
 
 ### .env.local 示例
 
@@ -1000,6 +1008,9 @@ NEXT_PUBLIC_ENABLE_ANIME=false
 # Bangumi Access Token
 # 获取方式：https://bgm.tv/dev/app
 # BANGUMI_TOKEN=your_bangumi_access_token
+
+# 番剧卡片显示的最大标签数量（默认为 3）
+# NEXT_PUBLIC_BANGUMI_MAX_TAGS=3
 ```
 
 ### 注意事项

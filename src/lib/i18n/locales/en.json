@@ -40,7 +40,21 @@
     "metadata": {
       "title": "Anime List",
       "description": "Anime and series I'm currently watching"
-    }
+    },
+    "categories": {
+      "all": "All",
+      "watching": "Watching",
+      "watched": "Watched",
+      "wish": "Want to Watch",
+      "onHold": "On Hold",
+      "dropped": "Dropped"
+    },
+    "count": "{{count}} items",
+    "allTags": "All Tags",
+    "tagFilter": "Filter by tags...",
+    "tagSearch": "Search tags...",
+    "tagEmpty": "No tags found",
+    "search": "Search anime..."
   },
   "page": {
     "about": "About",

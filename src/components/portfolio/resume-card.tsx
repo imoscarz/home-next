@@ -61,7 +61,7 @@ export const ResumeCard = ({
 
   const cardContent = (
     <Card
-      className={`flex transition-all duration-300 ease-out hover:shadow-lg ${
+      className={`flex p-4 transition-all duration-300 ease-out hover:shadow-lg ${
         isTapped ? "shadow-lg" : ""
       }`}
       onTouchStart={handleTouchStart}
@@ -74,7 +74,7 @@ export const ResumeCard = ({
         </Avatar>
       </div>
       <div className="group ml-4 grow flex-col items-center">
-        <CardHeader>
+        <CardHeader className="p-0">
           <div className="flex items-center justify-between gap-x-2 text-base">
             <h3 className="inline-flex items-center justify-center text-xs leading-none font-semibold sm:text-sm">
               {useMarkdown ? (
@@ -129,7 +129,7 @@ export const ResumeCard = ({
               duration: 0.7,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="mt-2 text-xs sm:text-sm"
+            className="mt-2 pb-2 text-xs sm:text-sm"
           >
             {useMarkdown ? (
               <CustomReactMarkdown>{description}</CustomReactMarkdown>
