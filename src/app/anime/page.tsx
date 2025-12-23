@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { AnimeListClient } from "@/components/portfolio/anime-list-client";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { BLUR_FADE_DELAY } from "@/data";
-import { getBangumiCollections, type CollectionType } from "@/lib/bangumi";
+import { type CollectionType,getBangumiCollections } from "@/lib/bangumi";
 import { env } from "@/lib/env";
 import { getDictionary, getLocaleFromSearchParams } from "@/lib/i18n";
 
@@ -43,12 +43,12 @@ export default async function AnimePage({ searchParams }: PageProps) {
   };
 
   const categories: { key: CollectionType; label: string }[] = [
-    { key: 'all', label: dict.anime.categories.all },
-    { key: 'watching', label: dict.anime.categories.watching },
-    { key: 'watched', label: dict.anime.categories.watched },
-    { key: 'wish', label: dict.anime.categories.wish },
-    { key: 'onHold', label: dict.anime.categories.onHold },
-    { key: 'dropped', label: dict.anime.categories.dropped },
+    { key: 'all' as const, label: dict.anime.categories.all },
+    { key: 'watching' as const, label: dict.anime.categories.watching },
+    { key: 'watched' as const, label: dict.anime.categories.watched },
+    { key: 'wish' as const, label: dict.anime.categories.wish },
+    { key: 'onHold' as const, label: dict.anime.categories.onHold },
+    { key: 'dropped' as const, label: dict.anime.categories.dropped },
   ].filter(cat => cat.key === 'all' || groupedCollections[cat.key].length > 0);
 
   return (

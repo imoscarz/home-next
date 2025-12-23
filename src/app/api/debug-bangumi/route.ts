@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+
 import { getBangumiCollections } from "@/lib/bangumi";
 import { env } from "@/lib/env";
 

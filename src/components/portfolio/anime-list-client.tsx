@@ -1,13 +1,14 @@
 "use client";
 
-import * as React from "react";
 import { Search } from "lucide-react";
-import { BlurFade } from "@/components/ui/blur-fade";
-import { BangumiCard } from "@/components/portfolio/bangumi-card";
+import * as React from "react";
+
 import { AnimeCategorySelect } from "@/components/portfolio/anime-category-select";
 import { AnimeTagSelect } from "@/components/portfolio/anime-tag-select";
-import type { BangumiCollection, CollectionType } from "@/lib/bangumi";
+import { BangumiCard } from "@/components/portfolio/bangumi-card";
+import { BlurFade } from "@/components/ui/blur-fade";
 import { BLUR_FADE_DELAY } from "@/data";
+import type { BangumiCollection, CollectionType } from "@/lib/bangumi";
 
 type AnimeListClientProps = {
   groupedCollections: Record<CollectionType, BangumiCollection[]>;

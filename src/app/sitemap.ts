@@ -11,7 +11,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Static routes
   const staticRoutes: MetadataRoute.Sitemap = [
-    // Chinese (default)
     {
       url: baseUrl,
       lastModified: new Date(),
@@ -24,18 +23,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly",
       priority: 0.8,
     },
-    // English
     {
-      url: `${baseUrl}/en`,
+      url: `${baseUrl}/anime`,
       lastModified: new Date(),
       changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/en/blog`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
+      priority: 0.7,
     },
   ];
 

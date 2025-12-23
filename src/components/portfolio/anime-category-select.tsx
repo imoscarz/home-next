@@ -1,14 +1,13 @@
 "use client";
 
-import * as React from "react";
 import { ListFilter } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import * as React from "react";
+
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
 } from "@/components/ui/select";
 import type { CollectionType } from "@/lib/bangumi";
 

@@ -137,7 +137,7 @@ export async function getFeedItems(): Promise<BlogPost[]> {
       // Only show RSS feed
       return fetchRSSFeed();
 
-    case "both":
+    case "both": {
       // Combine both sources
       const [rssPosts, newsPosts] = await Promise.all([
         fetchRSSFeed(),
@@ -150,6 +150,7 @@ export async function getFeedItems(): Promise<BlogPost[]> {
       });
       
       return allPosts;
+    }
 
     default:
       // Default to RSS for backward compatibility

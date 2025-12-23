@@ -1,8 +1,8 @@
 "use client";
 
+import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "motion/react";
 
 import { Badge } from "@/components/ui/badge";
 import { BangumiCollection, getCollectionTypeLabel } from "@/lib/bangumi";
