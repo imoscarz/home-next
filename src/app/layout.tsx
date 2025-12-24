@@ -111,7 +111,9 @@ export default function ChineseLayout({
               <Navbar />
             </Suspense>
             {children}
-            <Footer />
+            <Suspense fallback={null}>
+              <Footer />
+            </Suspense>
           </TooltipProvider>
         </ThemeProvider>
 

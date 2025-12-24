@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 
 import { Icons } from "@/components/icons";
 import { Separator } from "@/components/ui/separator";
-import { useLocale } from "@/lib/i18n";
 import { DATA } from "@/data";
+import { useLocale } from "@/lib/i18n";
 
 type Dictionary = {
   nav: {
