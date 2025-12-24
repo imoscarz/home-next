@@ -4,38 +4,24 @@
 
 A modern personal homepage and blog system built with Next.js 15, featuring bilingual support (Chinese/English).
 
-> **基于项目**: 本项目修改自 [zhengzangw/nextjs-portfolio-blog-research](https://github.com/zhengzangw/nextjs-portfolio-blog-research)
+> [!NOTE]
+>  **基于项目**: 本项目修改自 [zhengzangw/nextjs-portfolio-blog-research](https://github.com/zhengzangw/nextjs-portfolio-blog-research)
 
 ## 🔄 主要改动 / Key Changes
 
 相较于原项目，本项目进行了以下改进：
 
-### 配置系统增强
-- ✨ 新增 Footer 配置系统（资源链接 & 发现链接）
-- 🔧 大幅增强环境变量支持（20+ 配置项）
-- 📋 统一 PersonalInfo 配置结构（中英文统一管理）
-- 🎨 支持 Favicon 环境变量配置
-- 📝 新增 Feed 多模式支持（Latest News / RSS / 合并）
-
 ### 功能优化
 - 🗑️ 移除简历相关内容（专注于主页和博客）
-- 📰 Feed API 支持三种模式切换：
-  - `news`: 仅显示站内最新动态
-  - `rss`: 仅转发外部 RSS 订阅
-  - `both`: 合并两者并按时间排序
-- 🔗 Discover 配置从 contacts 移至 footer
+- 📰 重构了博客系统
 - 🎬 番剧列表功能：
   - 集成 Bangumi API 显示追番记录
-  - 支持分类筛选（想看/在看/看过/搁置/抛弃）
-  - 多标签筛选和搜索功能
+  - 支持分类筛选、标签筛选、搜索
   - 响应式瀑布流布局
   - 移动端优化的紧凑模式
-
-### 文档完善
-- 📚 新增完整配置指南（1400+ 行）
-- 📖 详细的环境变量模板和说明
-- 🖼️ Next.js 图片配置指引（remotePatterns）
-- 🌐 国际化配置指南
+- 📱 优化了多端适配
+- 📚 新增完整配置指南
+- 🪲 修复了若干Bug
 
 详细配置说明请参考 [配置指南](docs/configuration-guide.md)。
 
@@ -45,8 +31,8 @@ A modern personal homepage and blog system built with Next.js 15, featuring bili
 - 🎨 **Tailwind CSS** - 现代化的样式设计
 - 🌐 **国际化 (i18n)** - 支持中英文双语切换
 - 📝 **RSS 博客集成** - 通过 RSS feed 聚合外部博客内容
-- � **番剧追踪** - 集成 Bangumi API，展示追番列表和进度
-- �🎯 **TypeScript** - 完整的类型安全
+- 📺 **番剧追踪** - 集成 Bangumi API，展示追番列表和进度
+- 🎯 **TypeScript** - 完整的类型安全
 - 🎭 **动画效果** - 使用 Motion 和 Framer Motion
 - 📊 **分析集成** - Google Analytics 和 Vercel Analytics
 - 🎨 **主题切换** - 支持明暗主题切换
@@ -107,8 +93,8 @@ A modern personal homepage and blog system built with Next.js 15, featuring bili
 
 ```bash
 # 克隆项目
-git clone <your-repo-url>
-cd homepage-new
+git clone [<your-repo-url>](https://github.com/imoscarz/home-next.git)
+cd homepage-next
 
 # 安装依赖
 pnpm install
@@ -121,9 +107,6 @@ pnpm install
 ```bash
 # 复制示例文件
 cp .env.example .env.local
-
-# 或使用带说明的模板
-cp .env.local.template .env.local
 ```
 
 然后编辑 `.env.local`，至少配置以下必填项：
@@ -221,17 +204,10 @@ pnpm lint
 3. 配置环境变量
 4. 部署
 
-### 其他平台
-
-项目可部署到任何支持 Next.js 的平台：
-- Netlify
-- AWS Amplify
-- Railway
-- 自托管服务器
 
 ## 📄 许可证 / License
 
-请查看 LICENSE 文件了解详情。
+[`MIT Licence`](https://github.com/imoscarz/home-next/blob/main/LICENSE)
 
 ## 🤝 贡献 / Contributing
 
