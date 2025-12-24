@@ -176,13 +176,13 @@ export default function Footer() {
               <span>•</span>
               <span>{t.footer.bottom.buildWith}</span>
               <Link
-                href="https://github.com/zhengzangw/nextjs-portfolio-blog-research"
+                href="https://github.com/imoscarz/home-next"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-foreground inline-flex items-center gap-1 transition-colors"
               >
                 <Icons.github className="h-4 w-4" />
-                <span>zhengzangw/nextjs-portfolio-blog-research</span>
+                <span>imoscarz/home-next</span>
               </Link>
             </div>
           </div>
