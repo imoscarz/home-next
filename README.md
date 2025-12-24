@@ -93,7 +93,7 @@ A modern personal homepage and blog system built with Next.js 15, featuring bili
 
 ```bash
 # 克隆项目
-git clone [<your-repo-url>](https://github.com/imoscarz/home-next.git)
+git clone https://github.com/imoscarz/home-next.git
 cd homepage-next
 
 # 安装依赖
@@ -137,8 +137,6 @@ NEXT_PUBLIC_BANGUMI_MAX_TAGS=3
 大部分网站基本信息和个人信息已通过 `.env.local` 配置，无需修改代码文件。
 
 如需自定义详细的个人介绍，可编辑 `src/config/personal.ts` 中的 `summaryEn` 和 `summaryZh` 变量。
-
-#### 2. 项目信息
 
 #### 2. 项目信息
 
