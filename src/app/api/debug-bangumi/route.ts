@@ -7,7 +7,6 @@ export async function GET() {
   try {
     const collections = await getBangumiCollections(
       env.bangumiUsername,
-      env.bangumiToken,
       3 // watching
     );
 
