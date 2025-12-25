@@ -139,7 +139,6 @@ NEXT_PUBLIC_DESCRIPTION=Developer, Designer, Creator
 
 # 番剧追踪（可选）
 NEXT_PUBLIC_BANGUMI_USERNAME=your_bangumi_username
-NEXT_PUBLIC_BANGUMI_TOKEN=your_bangumi_token
 NEXT_PUBLIC_BANGUMI_MAX_TAGS=3
 ```
 

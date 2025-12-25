@@ -66,7 +66,6 @@ const BANGUMI_API_BASE = "https://api.bgm.tv";
 
 export async function getBangumiCollections(
   username: string,
-  token: string,
   type: number = 3 // 3 = watching
 ): Promise<BangumiCollection[]> {
   try {
@@ -74,7 +73,6 @@ export async function getBangumiCollections(
       `${BANGUMI_API_BASE}/v0/users/${username}/collections?subject_type=2&type=${type}&limit=100`,
       {
         headers: {
-          Authorization: `Bearer ${token}`,
           "User-Agent": "zhengzangw/nextjs-portfolio (https://github.com/zhengzangw/nextjs-portfolio)",
         },
         next: {

@@ -27,7 +27,7 @@ export default async function AnimePage({ searchParams }: PageProps) {
   
   // Fetch all collection types
   const allCollectionsPromises = [1, 2, 3, 4, 5].map(type => 
-    getBangumiCollections(env.bangumiUsername, env.bangumiToken, type)
+    getBangumiCollections(env.bangumiUsername, type)
   );
   const allCollectionsArrays = await Promise.all(allCollectionsPromises);
   const allCollections = allCollectionsArrays.flat();

@@ -42,7 +42,6 @@ export const env = {
   enableAnime: process.env.NEXT_PUBLIC_ENABLE_ANIME === "true",
 
   // Bangumi API
-  bangumiToken: process.env.BANGUMI_TOKEN || "",
   bangumiUsername: process.env.BANGUMI_USERNAME || "",
   bangumiMaxTags: parseInt(process.env.NEXT_PUBLIC_BANGUMI_MAX_TAGS || "3", 10),
 } as const;

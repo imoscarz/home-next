@@ -902,7 +902,6 @@ NEXT_PUBLIC_RSS_FEED_URL=https://your-blog.com/rss.xml
 
 | 变量名 | 类型 | 说明 | 默认值 |
 |--------|------|------|--------|
-| `BANGUMI_TOKEN` | string | Bangumi API Token | `""` |
 | `BANGUMI_USERNAME` | string | Bangumi 用户名 | `""` |
 
 #### Bangumi 配置
@@ -1005,10 +1004,6 @@ NEXT_PUBLIC_ENABLE_ANIME=false
 # 需要同时设置 NEXT_PUBLIC_ENABLE_ANIME=true
 # BANGUMI_USERNAME=your_bangumi_username
 
-# Bangumi Access Token
-# 获取方式：https://bgm.tv/dev/app
-# BANGUMI_TOKEN=your_bangumi_access_token
-
 # 番剧卡片显示的最大标签数量（默认为 3）
 # NEXT_PUBLIC_BANGUMI_MAX_TAGS=3
 ```
@@ -1016,7 +1011,7 @@ NEXT_PUBLIC_ENABLE_ANIME=false
 ### 注意事项
 
 1. **公开变量**: 以 `NEXT_PUBLIC_` 开头的变量会暴露给浏览器
-2. **私密变量**: 不带前缀的变量（如 `BANGUMI_TOKEN`）仅在服务器端可访问
+2. **私密变量**: 不带前缀的变量仅在服务器端可访问
 3. **类型安全**: 通过 `env.ts` 导入使用，确保类型安全
 4. **Git 忽略**: `.env.local` 已在 `.gitignore` 中，不会被提交
 

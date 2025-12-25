@@ -43,7 +43,6 @@
 
 ```env
 NEXT_PUBLIC_BANGUMI_USERNAME=your_username    # Bangumi 用户名
-NEXT_PUBLIC_BANGUMI_TOKEN=your_token          # Bangumi API Token
 NEXT_PUBLIC_BANGUMI_MAX_TAGS=3                # 显示的标签数量（默认3）
 ```
 
