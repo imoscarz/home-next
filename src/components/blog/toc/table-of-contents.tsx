@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { useLocale } from "@/lib/i18n";
+import { useDictionary, useLocale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
 interface TOCItem {
@@ -26,7 +26,7 @@ export function TableOfContents({
 }: TableOfContentsProps) {
   const [toc, setToc] = useState<TOCItem[]>([]);
   const locale = useLocale();
-  const isEnglish = locale === "en";
+  const dict = useDictionary();
 
   // Extract headings from HTML content
   useEffect(() => {
@@ -63,13 +63,13 @@ export function TableOfContents({
       {!hideTitle && (
         <div className="mb-4">
           <h3 className="text-foreground/90 text-sm font-medium tracking-wide">
-            {isEnglish ? "Table of Contents" : "目录"}
+            {dict?.blog.toc.title || (locale === "en" ? "Table of Contents" : "目录")}
           </h3>
         </div>
       )}
       {toc.length === 0 ? (
         <div className="text-muted-foreground/70 py-8 text-center text-sm">
-          <p>{isEnglish ? "No table of contents available" : "暂无目录"}</p>
+          <p>{dict?.blog.toc.noContent || (locale === "en" ? "No table of contents available" : "暂无目录")}</p>
         </div>
       ) : (
         <nav className="space-y-0.5">

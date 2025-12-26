@@ -31,7 +31,13 @@
     "readMore": "阅读更多",
     "title": "博客",
     "noPosts": "暂无博客文章。请在环境变量中配置RSS订阅源URL。",
-    "visitBlogHome": "访问博客首页"
+    "visitBlogHome": "访问博客首页",
+    "toc": {
+      "title": "目录",
+      "toggle": "切换目录",
+      "close": "关闭目录",
+      "noContent": "暂无目录"
+    }
   },
   "anime": {
     "title": "追番列表",
@@ -54,7 +60,8 @@
     "tagFilter": "筛选标签...",
     "tagSearch": "搜索标签...",
     "tagEmpty": "未找到标签",
-    "search": "搜索番剧..."
+    "search": "搜索番剧...",
+    "progress": "进度"
   },
   "page": {
     "about": "关于我",

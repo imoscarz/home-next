@@ -31,7 +31,13 @@
     "readMore": "Read more",
     "title": "Blog",
     "noPosts": "No blog posts available. Configure your RSS feed URL in the environment variables.",
-    "visitBlogHome": "Visit Blog Home"
+    "visitBlogHome": "Visit Blog Home",
+    "toc": {
+      "title": "Table of Contents",
+      "toggle": "Toggle table of contents",
+      "close": "Close table of contents",
+      "noContent": "No table of contents available"
+    }
   },
   "anime": {
     "title": "Anime List",
@@ -54,7 +60,8 @@
     "tagFilter": "Filter by tags...",
     "tagSearch": "Search tags...",
     "tagEmpty": "No tags found",
-    "search": "Search anime..."
+    "search": "Search anime...",
+    "progress": "Progress"
   },
   "page": {
     "about": "About",

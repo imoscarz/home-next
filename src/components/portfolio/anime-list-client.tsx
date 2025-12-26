@@ -9,11 +9,13 @@ import { BangumiCard } from "@/components/portfolio/bangumi-card";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { BLUR_FADE_DELAY } from "@/data";
 import type { BangumiCollection, CollectionType } from "@/lib/bangumi";
+import { useDictionary } from "@/lib/i18n";
+import type { Locale } from "@/lib/i18n/config";
 
 type AnimeListClientProps = {
   groupedCollections: Record<CollectionType, BangumiCollection[]>;
   categories: Array<{ key: CollectionType; label: string }>;
-  locale: "en" | "zh";
+  locale: Locale;
   noAnimeText: string;
   tagFilterPlaceholder: string;
   tagSearchPlaceholder: string;
@@ -31,6 +33,7 @@ export function AnimeListClient({
   tagEmptyText,
   searchPlaceholder,
 }: AnimeListClientProps) {
+  const dict = useDictionary();
   const [selectedCategory, setSelectedCategory] = React.useState<CollectionType>("all");
   const [selectedTags, setSelectedTags] = React.useState<string[]>([]);
   const [searchQuery, setSearchQuery] = React.useState("");
@@ -153,7 +156,8 @@ export function AnimeListClient({
             >
               <BangumiCard 
                 collection={collection} 
-                locale={locale} 
+                locale={locale}
+                dict={dict}
               />
             </div>
           ))}

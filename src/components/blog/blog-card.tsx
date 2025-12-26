@@ -3,6 +3,8 @@ import Link from "next/link";
 
 import { Icons } from "@/components/icons";
 import { Badge } from "@/components/ui/badge";
+import { getDictionary } from "@/lib/i18n";
+import type { Locale } from "@/lib/i18n/config";
 
 interface BlogCardProps {
   // For internal blog posts
@@ -15,7 +17,8 @@ interface BlogCardProps {
   author?: string;
   categories?: string[];
   image?: string;
-  locale?: string;
+  locale?: Locale;
+  dict?: Awaited<ReturnType<typeof getDictionary>>;
 }
 
 export function BlogCard({
@@ -28,6 +31,7 @@ export function BlogCard({
   categories,
   image,
   locale = "en",
+  dict,
 }: BlogCardProps) {
   // Determine if this is an external link (RSS) or internal link
   const isExternal = !!link;
@@ -49,7 +53,7 @@ export function BlogCard({
     >
       <div className="flex h-full flex-col">
         {image && (
-          <div className="relative aspect-[2/1] w-full overflow-hidden bg-muted">
+          <div className="bg-muted relative aspect-[2/1] w-full overflow-hidden">
             <Image
               src={image}
               alt={title}
@@ -59,7 +63,7 @@ export function BlogCard({
             />
           </div>
         )}
-        
+
         <div className="flex flex-1 flex-col p-4 sm:p-5">
           <div className="mb-3 flex items-start justify-between gap-3">
             <h2 className="line-clamp-2 flex-1 text-base font-medium tracking-tight md:text-lg">
@@ -77,14 +81,14 @@ export function BlogCard({
                 )}
               </span>
               {isExternal && (
-                <Icons.externalLink className="h-3.5 w-3.5 text-muted-foreground transition-colors group-hover:text-foreground" />
+                <Icons.externalLink className="text-muted-foreground group-hover:text-foreground h-3.5 w-3.5 transition-colors" />
               )}
             </div>
           </div>
 
           {author && (
-            <div className="mb-2 text-xs text-muted-foreground">
-              {locale === "zh" ? "作者：" : "By "}
+            <div className="text-muted-foreground mb-2 text-xs">
+              {dict?.blog.by || (locale === "zh" ? "作者：" : "By ")}
               {author}
             </div>
           )}
@@ -107,7 +111,7 @@ export function BlogCard({
 
           <div className="text-muted-foreground mt-auto flex items-center justify-between pt-2 text-xs">
             <span className="group-hover:text-foreground inline-flex items-center gap-1 transition-colors">
-              {locale === "zh" ? "阅读更多" : "Read more"}
+              {dict?.blog.readMore || (locale === "zh" ? "阅读更多" : "Read more")}
               <Icons.chevronright className="h-3.5 w-3.5" />
             </span>
           </div>

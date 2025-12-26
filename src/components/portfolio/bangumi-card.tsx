@@ -7,13 +7,19 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { BangumiCollection, getCollectionTypeLabel } from "@/lib/bangumi";
 import { env } from "@/lib/env";
+import type { Locale } from "@/lib/i18n/config";
 
 interface BangumiCardProps {
   collection: BangumiCollection;
-  locale: "en" | "zh";
+  locale: Locale;
+  dict?: {
+    anime: {
+      progress: string;
+    };
+  } | null;
 }
 
-export function BangumiCard({ collection, locale }: BangumiCardProps) {
+export function BangumiCard({ collection, locale, dict }: BangumiCardProps) {
   const { subject } = collection;
   const displayName = locale === "zh" && subject.name_cn ? subject.name_cn : subject.name;
   const bangumiUrl = `https://bgm.tv/subject/${subject.id}`;
@@ -91,7 +97,7 @@ export function BangumiCard({ collection, locale }: BangumiCardProps) {
             <div className="flex items-center justify-between text-xs text-muted-foreground mb-2">
               {totalEpisodes > 0 && (
                 <span>
-                  {locale === "zh" ? "进度" : "Progress"}: {watchedEpisodes}/{totalEpisodes}
+                  {dict?.anime.progress || (locale === "zh" ? "进度" : "Progress")}: {watchedEpisodes}/{totalEpisodes}
                 </span>
               )}
               {subject.rating?.score > 0 && (

@@ -77,6 +77,7 @@ export default async function BlogPage({ searchParams }: PageProps) {
                   categories={post.categories}
                   image={post.image}
                   locale={locale}
+                  dict={dict}
                 />
               </BlurFade>
             ))}
