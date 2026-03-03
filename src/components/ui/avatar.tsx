@@ -48,10 +48,13 @@ type AvatarImageProps = {
 
 function AvatarImage({ src, alt, className, unoptimized = true, sizes = "48px", ...rest }: AvatarImageProps) {
   if (!src) return null;
-  // Derive an integer pixel size from sizes string
+  // Derive the rendered pixel size from the sizes string.
+  // Match the *last* `\d+px` segment, which is the fallback (no-condition) value
+  // in a `sizes` string like `(max-width: 768px) 48px, 96px`. Falling back to 48.
   const requestedPx = (() => {
-    const match = String(sizes).match(/(\d+)/);
-    const parsedSize = match ? parseInt(match[1], 10) : 48;
+    const matches = [...String(sizes).matchAll(/(\d+)px/g)];
+    const last = matches[matches.length - 1];
+    const parsedSize = last ? parseInt(last[1], 10) : 48;
     return Number.isFinite(parsedSize) && parsedSize > 0 ? parsedSize : 48;
   })();
 
