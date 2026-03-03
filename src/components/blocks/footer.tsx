@@ -57,12 +57,21 @@ export default function Footer() {
 
   const t = dict;
 
+  // Build absolute hrefs for Quick Navigation sections so they work on every page.
+  // Preserves the language param when not using the default locale.
+  const buildSectionHref = (hash: string) => {
+    if (currentLocale !== "zh") {
+      return `/?lang=${currentLocale}${hash}`;
+    }
+    return `/${hash}`;
+  };
+
   // Create navigation sections with translations
   const translatedNavigationSections = [
-    { name: t.nav.about, href: "#about" },
-    { name: t.nav.projects, href: "#projects" },
-    { name: t.nav.skills, href: "#skills" },
-    { name: t.nav.education, href: "#education" },
+    { name: t.nav.about, href: buildSectionHref("#about") },
+    { name: t.nav.projects, href: buildSectionHref("#projects") },
+    { name: t.nav.skills, href: buildSectionHref("#skills") },
+    { name: t.nav.education, href: buildSectionHref("#education") },
   ];
 
   return (
