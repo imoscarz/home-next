@@ -37,11 +37,40 @@ Avatar.displayName = AvatarPrimitive.Root.displayName;
 type AvatarImageProps = {
   src?: string;
   alt: string;
+  /**
+   * Whether to skip Next.js image optimization.
+   * Defaults to true (unoptimized) to conserve Vercel image optimization quota.
+   * Small avatars (≤64px) typically don't need optimization.
+   */
+  unoptimized?: boolean;
+  sizes?: string;
 } & React.ComponentProps<typeof AvatarPrimitive.Image>;
 
-function AvatarImage({ src, alt, className, ...rest }: AvatarImageProps) {
+function AvatarImage({ src, alt, className, unoptimized = true, sizes = "48px", ...rest }: AvatarImageProps) {
   if (!src) return null;
-  const { props } = getImageProps({ src, alt, fill: true });
+  // Derive an integer pixel size from sizes string
+  const requestedPx = (() => {
+    const match = String(sizes).match(/(\d+)/);
+    const parsedSize = match ? parseInt(match[1], 10) : 48;
+    return Number.isFinite(parsedSize) && parsedSize > 0 ? parsedSize : 48;
+  })();
+
+  // If the src is a GitHub avatar, add s=<size> query to reduce upstream bytes
+  let finalSrc = src;
+  try {
+    const u = new URL(src);
+    if (u.hostname === "avatars.githubusercontent.com") {
+      const hasSize = u.searchParams.has("s") || u.searchParams.has("size");
+      if (!hasSize) {
+        u.searchParams.set("s", String(requestedPx));
+      }
+      finalSrc = u.toString();
+    }
+  } catch {
+    // ignore invalid URL (likely local image path)
+  }
+
+  const { props } = getImageProps({ src: finalSrc, alt, fill: true, sizes, unoptimized });
   return <AvatarPrimitive.Image {...props} {...rest} className={className} />;
 }
 
